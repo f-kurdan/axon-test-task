@@ -1,0 +1,120 @@
+.table-container {
+  width: 1090px;
+}
+
+.table__table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  height: 48px;
+}
+
+.table__table-header__title {
+  width: 427px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31.2px;
+}
+
+.table__table-header__button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #F7EE55;
+  width: 278px;
+  height: 48px;
+}
+
+.table__table-header__button__text {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21.94px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.table-container__table {
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 4px;
+  border: 1px solid #C5C5C5;
+  text-align: left;
+  background-color: white;
+}
+
+/* свистопляски для создания закругленных углов у таблицы 
+ __________________________________________________________*/
+table th:not(:last-child),
+table td:not(:last-child) {
+  border-right: 1px solid #C5C5C5;
+}
+
+table th,
+table>thead>tr:not(:last-child)>th,
+table>thead>tr:not(:last-child)>td,
+table>tbody>tr:not(:last-child)>th,
+table>tbody>tr:not(:last-child)>td,
+table>tfoot>tr:not(:last-child)>th,
+table>tfoot>tr:not(:last-child)>td,
+table>tr:not(:last-child)>td,
+table>tr:not(:last-child)>th,
+table>thead:not(:last-child),
+table>tbody:not(:last-child),
+table>tfoot:not(:last-child) {
+  border-bottom: 1px solid #C5C5C5;
+}
+
+/* _________________________________________________ */
+
+thead {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #777777;
+}
+
+th, td {
+  padding: 10px 12px;
+}
+
+th:nth-child(2) {
+  width: 214px;
+}
+
+th:nth-child(3) {
+  width: 272px;
+}
+
+th:nth-child(4) {
+  width: 235px;
+}
+
+th:nth-child(5) {
+  width: 188px;
+}
+
+th:nth-child(6) {
+  width: 40px;
+}
+
+th:nth-child(7) {
+  width: 98px;
+}
+
+tbody {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: #333333;
+}
+
+.table-container__table__table-body__mutations {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
