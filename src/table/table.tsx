@@ -37,15 +37,6 @@ const Table = () => {
               <td><FontAwesomeIcon icon={faCircleQuestion} /></td>
               <td><MutaionsIcons /></td>
             </tr>
-            <tr className='table-container__table__table-body__row'>
-              <td>1</td>
-              <td>John</td>
-              <td>30</td>
-              <td>USA</td>
-              <td>Активно</td>
-              <td ><FontAwesomeIcon icon={faCircleQuestion} /></td>
-              <td></td>
-            </tr>
           </tbody>
         </table>
       </div>
