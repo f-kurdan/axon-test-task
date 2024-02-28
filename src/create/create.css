@@ -5,6 +5,8 @@
     align-items: flex-start;
     gap: 28px;
     width: 691px;
+    padding-top: 60px;
+
 }
 
 .create-container__title {
@@ -39,7 +41,7 @@
     align-items: center;
 }
 
-.create-container__textarea-label{
+.create-container__textarea-label {
     position: relative;
     width: 100%;
     font-size: 18px;
@@ -171,7 +173,7 @@
     height: 48px;
     border: 1px solid black;
     border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;    
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 18px;
     padding: 0 23px;
@@ -180,31 +182,20 @@
 .create-container__buttons__cancel {
     background-color: black;
     color: white;
-    height: 48px;
-    border-radius: 10px;
-    border: 1px solid black;
-    font-family: 'Montserrat', sans-serif;    
-    font-weight: 600;
-    font-size: 18px;
-    text-align: center;
-    padding: 0 23px;
 }
 
 .create-container__buttons__delete {
     background-color: #DA1515;
     color: white;
+}
+
+.button {
     height: 48px;
     border-radius: 10px;
     border: 1px solid black;
-    font-family: 'Montserrat', sans-serif;    
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 18px;
-    text-align: center;
     padding: 0 23px;
-}
-
-.create-container__buttons__delete__text {
-    display: inline-block;
-    width: min-content;
-    padding: 0px;
+    cursor: pointer;
 }

@@ -1,5 +1,8 @@
 .table-container {
-  width: 1090px;
+  max-width: 1090px;
+  margin: 0 auto;
+  padding-top: 52px; 
+  padding-left: 1px;
 }
 
 .table__table-header {
@@ -15,7 +18,7 @@
   width: 427px;
   font-weight: 600;
   font-size: 24px;
-  line-height: 31.2px;
+  margin-left: -3px;
 }
 
 .table__table-header__button {
@@ -26,24 +29,26 @@
   border: 1px solid black;
   border-radius: 10px;
   background-color: #F7EE55;
-  width: 278px;
-  height: 48px;
+  width: 277px;
+  height: 100%;
+  cursor: pointer;
 }
 
 .table__table-header__button__text {
   font-weight: 600;
   font-size: 18px;
-  line-height: 21.94px;
   font-family: 'Montserrat', sans-serif;
 }
 
 .table-container__table {
+  /* font-family: 'Montserrat', sans-serif; */
   border-spacing: 0;
   border-collapse: separate;
   border-radius: 4px;
   border: 1px solid #C5C5C5;
   text-align: left;
   background-color: white;
+  width: 100%;
 }
 
 /* свистопляски для создания закругленных углов у таблицы 
@@ -71,9 +76,7 @@ table>tfoot:not(:last-child) {
 /* _________________________________________________ */
 
 thead {
-  font-weight: 600;
   font-size: 14px;
-  line-height: 18.2px;
   color: #777777;
 }
 
@@ -81,19 +84,27 @@ th, td {
   padding: 10px 12px;
 }
 
+th:nth-child(1) {
+  width: 43px;
+}
+
 th:nth-child(2) {
+  font-weight: 600;
   width: 214px;
 }
 
 th:nth-child(3) {
+  font-weight: 600;
   width: 272px;
 }
 
 th:nth-child(4) {
+  font-weight: 600;
   width: 235px;
 }
 
 th:nth-child(5) {
+  font-weight: 600;
   width: 188px;
 }
 
@@ -102,13 +113,13 @@ th:nth-child(6) {
 }
 
 th:nth-child(7) {
-  width: 98px;
+  width: 95px;
 }
 
 tbody {
   font-weight: 400;
   font-size: 16px;
-  line-height: 20.8px;
+  height: 43px;
   color: #333333;
 }
 
@@ -116,5 +127,59 @@ tbody {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-inline: 6px ;
 }
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #555;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: calc(100% + 5px); /* Position below the button */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
