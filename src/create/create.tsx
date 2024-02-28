@@ -2,6 +2,7 @@ import React from 'react'
 import Checkbox from '../common/checkbox'
 import Dropdown from '../common/dropdown'
 import './create.css'
+import { Link } from 'react-router-dom'
 
 const Create = () => {
     return (
@@ -26,8 +27,10 @@ const Create = () => {
                 <textarea className='create-container__textarea' />
             </label>
             <div className='create-container__buttons'>
-                <button className='create-container__buttons__cancel'>Отмена</button>
-                <button className='create-container__buttons__create'>Создать</button>
+                <Link to={'/'} style={{ textDecoration: 'none' }}>
+                    <button className='create-container__buttons__cancel button'>Отмена</button>
+                </Link>
+                <button className='create-container__buttons__create button'>Создать</button>
             </div>
         </form>
     )

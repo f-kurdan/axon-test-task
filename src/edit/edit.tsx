@@ -2,6 +2,7 @@ import React from 'react'
 import Dropdown from '../common/dropdown'
 import Checkbox from '../common/checkbox'
 import '../create/create.css'
+import { Link } from 'react-router-dom'
 
 const Edit = () => {
     return (
@@ -26,11 +27,13 @@ const Edit = () => {
                 <textarea className='create-container__textarea' />
             </label>
             <div className='create-container__buttons'>
-                <button className='create-container__buttons__delete'>
+                <button className='create-container__buttons__delete button'>
                     <span className='create-container__buttons__delete__text'>Удалить</span>
                 </button>
-                <button className='create-container__buttons__cancel'>Отмена</button>
-                <button className='create-container__buttons__create'>Сохранить</button>
+                <Link to={'/'} style={{ textDecoration: 'none' }}>
+                    <button className='create-container__buttons__cancel button'>Отмена</button>
+                </Link>
+                <button className='create-container__buttons__create button'>Сохранить</button>
             </div>
         </form>
     )
