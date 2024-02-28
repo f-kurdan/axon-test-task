@@ -1,13 +1,13 @@
 import React from 'react'
-import Dropdown from '../common/dropdown'
 import Checkbox from '../common/checkbox'
-import '../create/create.css'
+import Dropdown from '../common/dropdown'
+import './create.css'
 
-const Edit = () => {
+const Create = () => {
     return (
         <form className="create-container">
             <div className="create-container__title">
-                <span>Редактирование типа продукции</span>
+                <span>Создание типа продукции</span>
             </div>
             <label className='create-container__label'>
                 <span className='required'>Кол-во пачек</span>
@@ -26,14 +26,11 @@ const Edit = () => {
                 <textarea className='create-container__textarea' />
             </label>
             <div className='create-container__buttons'>
-                <button className='create-container__buttons__delete'>
-                    <span className='create-container__buttons__delete__text'>Удалить</span>
-                </button>
                 <button className='create-container__buttons__cancel'>Отмена</button>
-                <button className='create-container__buttons__create'>Сохранить</button>
+                <button className='create-container__buttons__create'>Создать</button>
             </div>
         </form>
     )
 }
 
-export default Edit
+export default Create
