@@ -152,6 +152,31 @@ tbody {
   max-width: 80%;
 }
 
+.dialog__title {
+  width: 100%;
+  text-align: center;
+}
+
+.dialog-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog__close-button {
+  color: white;
+  background-color: rgb(230, 110, 110);
+  min-width: 100px;
+  border: none;
+}
+.dialog__confirm-button {
+  color: white;
+  background-color: rgb(110, 230, 110);
+  min-width: 100px;
+  border: none;
+}
 .close-button {
   position: absolute;
   top: 10px;
@@ -173,13 +198,15 @@ tbody {
 
 .tooltip {
   position: absolute;
-  top: calc(100% + 5px); /* Position below the button */
-  left: 50%; /* Center horizontally */
+  top: calc(100% + 5px);
+  left: 50%; 
+  width: 200px;
   transform: translateX(-50%);
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 

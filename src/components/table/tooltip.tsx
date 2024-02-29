@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Tooltip = ({ isOpen }: { isOpen: boolean }) => {
-    return (
+const Tooltip = ({ isOpen, description }: { isOpen: boolean, description: string }) => {
+    return description ? (
         <div className="tooltip-container">
             <dialog open={isOpen} className="tooltip">
                 <span>
-                    Описание продукции.В несколько строк
+                    {description}
                 </span>
             </dialog>
         </div>
-    );
+    ) : null;
 }
 
 export default Tooltip

@@ -1,14 +1,14 @@
 import React from 'react'
-import Dropdown from '../common/dropdown'
-import Checkbox from '../common/checkbox'
-import '../create/create.css'
+import Checkbox from '../../common/checkbox'
+import Dropdown from '../../common/dropdown'
+import './create.css'
 import { Link } from 'react-router-dom'
 
-const Edit = () => {
+const Create = () => {
     return (
         <form className="create-container">
             <div className="create-container__title">
-                <span>Редактирование типа продукции</span>
+                <span>Создание типа продукции</span>
             </div>
             <label className='create-container__label'>
                 <span className='required'>Кол-во пачек</span>
@@ -27,16 +27,13 @@ const Edit = () => {
                 <textarea className='create-container__textarea' />
             </label>
             <div className='create-container__buttons'>
-                <button className='create-container__buttons__delete button'>
-                    <span className='create-container__buttons__delete__text'>Удалить</span>
-                </button>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <button className='create-container__buttons__cancel button'>Отмена</button>
                 </Link>
-                <button className='create-container__buttons__create button'>Сохранить</button>
+                <button className='create-container__buttons__create button'>Создать</button>
             </div>
         </form>
     )
 }
 
-export default Edit
+export default Create
