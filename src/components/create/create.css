@@ -110,7 +110,8 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    background-color: #6184FF;
+    background-color: white;
+    border: 2px solid #6184FF;
     border-radius: 4px;
     width: 24px;
     height: 24px;
@@ -119,21 +120,22 @@
 }
 
 .create-container__label__checkbox-label__custom-arrow {
+    visibility: hidden;
     position: absolute;
     top: 30%;
     right: 7px;
     fill: none;
     transition: all 0.2s ease;
     cursor: pointer;
+    
 }
 
-.create-container__label__checkbox-label__checkbox:checked+.custom-arrow {
-    display: none;
+.create-container__label__checkbox-label__checkbox:checked +.create-container__label__checkbox-label__custom-arrow {
+    visibility: visible;    
 }
 
 .create-container__label__checkbox-label__checkbox:checked {
-    background-color: white;
-    border: 2px solid #6184FF;
+    background-color: #6184FF;;
 }
 
 
