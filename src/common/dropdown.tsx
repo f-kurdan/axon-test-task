@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form/dist/types';
+import { Inputs } from '../types/inputs';
 import Arrow from './arrow';
 
-const Dropdown = () => {
+const Dropdown = ({register, setValue}:{
+    register: UseFormRegister<Inputs>, 
+    setValue: UseFormSetValue<Inputs>}) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState('компрессия');
+    const [selected, setSelected] = useState('');
+
+    useEffect(() => {
+        register('packageType',
+          { required: true}
+        );
+      }, []);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
     const handleOptionClick = (option: string) => {
+        setValue('packageType', option, { shouldValidate: true });
         setSelected(option);
     }
 
@@ -21,9 +32,8 @@ const Dropdown = () => {
             </div>
             {isOpen && (
                 <ul className='create-container__input__dropdown-list'>
-                    <li onClick={() => handleOptionClick('компрессия')}>компрессия</li>
-                    <li onClick={() => handleOptionClick('Option 2')}>Option 2</li>
-                    <li onClick={() => handleOptionClick('Option 3')}>Option 3</li>
+                    <li value={'компрессия'} onClick={() => handleOptionClick('компрессия')}>компрессия</li>
+                    <li value={'некомпрессия'} onClick={() => handleOptionClick('некомпрессия')}>некомпрессия</li>
                 </ul>
             )}
         </div>

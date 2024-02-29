@@ -2,29 +2,62 @@ import React from 'react'
 import Checkbox from '../../common/checkbox'
 import Dropdown from '../../common/dropdown'
 import './create.css'
+import { useNavigate } from 'react-router'
+import { useForm } from 'react-hook-form'
+import { SubmitHandler } from 'react-hook-form/dist/types'
+import { Inputs } from '../../types/inputs'
+import { useAddProductTypeMutation } from '../../store/apiSlice'
 import { Link } from 'react-router-dom'
 
 const Create = () => {
+    const navigate = useNavigate()
+    const [addProductType, { }] = useAddProductTypeMutation()
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        formState: { errors },
+    } = useForm<Inputs>()
+
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        data.packsNumber = Number(data.packsNumber)
+        try {
+            await addProductType(data).unwrap()
+            navigate('/')
+        } catch (err) {
+            console.error('Failed to save the post: ', err)
+        }
+    }
+
     return (
-        <form className="create-container">
+        <form onSubmit={handleSubmit(onSubmit)} className="create-container">
             <div className="create-container__title">
                 <span>Создание типа продукции</span>
             </div>
             <label className='create-container__label'>
-                <span className='required'>Кол-во пачек</span>
-                <input className='create-container__input' type="number" />
+                <span className={`${errors.packsNumber ? 'required' : ''}`}>Кол-во пачек</span>
+                <input
+                    {...register("packsNumber", {
+                        required: true,
+                    })}
+                    className='create-container__input'
+                    placeholder=''
+                    type="number"
+                />
             </label>
             <label className='create-container__label'>
-                <span className='required'>Тип упаковки</span>
-                <Dropdown />
+                <span className={`${errors.packageType ? 'required' : ''}`}>Тип упаковки</span>
+                <Dropdown register={register}
+                    setValue={setValue} />
             </label>
             <div className='create-container__checkbox'>
                 Архивировано
-                <Checkbox />
+                <Checkbox register={register} />
             </div>
             <label className='create-container__textarea-label'>
                 Описание
-                <textarea className='create-container__textarea' />
+                <textarea {...register("description")}
+                    className='create-container__textarea' />
             </label>
             <div className='create-container__buttons'>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
