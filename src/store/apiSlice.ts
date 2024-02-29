@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ProductType } from '../models/productType'
+import { ProductType } from '../types/productType'
 
 export const apiSlice = createApi({
   reducerPath: 'productTypesApi',
@@ -14,9 +14,34 @@ export const apiSlice = createApi({
       query: (productTypeId: string) => `/${productTypeId}`,
       providesTags: ['ProductTypes'],
     }),
-
+    addProductType: builder.mutation<ProductType, Partial<ProductType>>({
+      query: body => ({
+        url: '/',
+        method: 'POST',
+        body: body
+      }),
+      invalidatesTags: ['ProductTypes'],
+    }),
+    updateProductType: builder.mutation<ProductType, Partial<ProductType>>({
+      query: body => ({
+        url: '/',
+        method: 'PATCH',
+        body: body
+      }),
+      invalidatesTags: ['ProductTypes'],
+    }),
+    deleteProductType: builder.mutation({
+      query: id => ({
+        url: `/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['ProductTypes'],
+    })
   })
 })
 
-// Export the auto-generated hook for the `getPosts` query endpoint
-export const { useGetProductTypesQuery, useGetProductTypeQuery } = apiSlice
+export const {
+  useGetProductTypesQuery,
+  useGetProductTypeQuery,
+  useAddProductTypeMutation,
+  useUpdateProductTypeMutation } = apiSlice
