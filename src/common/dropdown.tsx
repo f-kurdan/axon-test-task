@@ -3,11 +3,12 @@ import { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form/d
 import { Inputs } from '../types/inputs';
 import Arrow from './arrow';
 
-const Dropdown = ({register, setValue}:{
+const Dropdown = ({register, setValue, packageType}:{
     register: UseFormRegister<Inputs>, 
-    setValue: UseFormSetValue<Inputs>}) => {
+    setValue: UseFormSetValue<Inputs>,
+    packageType: string}) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState(packageType);
 
     useEffect(() => {
         register('packageType',

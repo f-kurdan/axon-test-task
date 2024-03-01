@@ -6,8 +6,7 @@ const ProductTypes = () => {
     const { data: productTypes = [],
         isLoading,
         isSuccess,
-        isError,
-        error } = useGetProductTypesQuery('');
+        isError} = useGetProductTypesQuery('');
 
     const sortedProductTypes = useMemo(() => {
         const sortedPosts = productTypes.slice()
@@ -18,7 +17,7 @@ const ProductTypes = () => {
     if (isLoading) {
         return (<div>Загрузка...</div>)
     } else if (isError) {
-        return (<div>{'Произошла ошибка: ' + error}</div>)
+        return (<div>{'Произошла ошибка'}</div>)
     }
 
     return (

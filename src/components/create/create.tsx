@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 const Create = () => {
     const navigate = useNavigate()
-    const [addProductType, { }] = useAddProductTypeMutation()
+    const [addProductType] = useAddProductTypeMutation()
     const {
         register,
         handleSubmit,
@@ -48,7 +48,8 @@ const Create = () => {
             <label className='create-container__label'>
                 <span className={`${errors.packageType ? 'required' : ''}`}>Тип упаковки</span>
                 <Dropdown register={register}
-                    setValue={setValue} />
+                    setValue={setValue} 
+                    packageType={''}/>
             </label>
             <div className='create-container__checkbox'>
                 Архивировано

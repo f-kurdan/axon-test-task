@@ -44,7 +44,7 @@ const Type = ({ productType, index }: { productType: ProductType, index: number 
                 <Tooltip isOpen={isTooltipOpen}
                     description={productType.description} />
             </td>
-            <td><MutaionsIcons /></td>
+            <td><MutaionsIcons productType={productType} /></td>
 
         </>
     )
