@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-import Dialog from './dialog';
+import Dialog from '../common/dialog';
 import { ProductType } from '../../types/productType';
 
 const MutaionsIcons = ({ productType }: { productType: ProductType }) => {
@@ -25,7 +25,10 @@ const MutaionsIcons = ({ productType }: { productType: ProductType }) => {
         <FontAwesomeIcon color='#333333' icon={faPencil} />
       </Link>
       <FontAwesomeIcon style={{ cursor: 'pointer' }} onClick={handleOpenDialog} color='#333333' icon={faTrashCan} />
-      <Dialog isOpen={isDialogOpen} onClose={handleCloseDialog} />
+      <Dialog
+        isOpen={isDialogOpen}
+        onClose={handleCloseDialog}
+        productTypeId={productType.id} />
     </div>
   )
 }

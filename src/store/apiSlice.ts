@@ -27,11 +27,11 @@ export const apiSlice = createApi({
       query: (productType) => {
       const { id, ...body } = productType
       {
-        return {
+        return ({
         url: `/${productType.id}`,
         method: 'PATCH',
         body: body
-      }}},
+      })}},
       invalidatesTags: ['ProductTypes'],
     }),
     deleteProductType: builder.mutation({
