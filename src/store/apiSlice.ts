@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { CreateProductTypeDto } from '../types/createProductTypeDto'
 import { ProductType } from '../types/productType'
 
 export const apiSlice = createApi({
@@ -14,7 +15,7 @@ export const apiSlice = createApi({
       query: (productTypeId: string) => `/${productTypeId}`,
       providesTags: ['ProductTypes'],
     }),
-    addProductType: builder.mutation<ProductType, Partial<ProductType>>({
+    addProductType: builder.mutation<CreateProductTypeDto, Partial<CreateProductTypeDto>>({
       query: body => ({
         url: '/',
         method: 'POST',
@@ -22,12 +23,15 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ['ProductTypes'],
     }),
-    updateProductType: builder.mutation<ProductType, Partial<ProductType>>({
-      query: body => ({
-        url: '/',
+    updateProductType: builder.mutation<ProductType, Partial<CreateProductTypeDto> & { id: string }>({
+      query: (productType) => {
+      const { id, ...body } = productType
+      {
+        return {
+        url: `/${productType.id}`,
         method: 'PATCH',
         body: body
-      }),
+      }}},
       invalidatesTags: ['ProductTypes'],
     }),
     deleteProductType: builder.mutation({
@@ -44,4 +48,5 @@ export const {
   useGetProductTypesQuery,
   useGetProductTypeQuery,
   useAddProductTypeMutation,
-  useUpdateProductTypeMutation } = apiSlice
+  useUpdateProductTypeMutation,
+  useDeleteProductTypeMutation } = apiSlice
