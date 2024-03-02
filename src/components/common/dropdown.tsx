@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react';
+
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form/dist/types';
+
 import { Inputs } from '../../types/inputs';
 import Arrow from './arrow';
 
@@ -29,10 +31,10 @@ const Dropdown = ({register, setValue, packageType}:{
         <div className='create-container__input' onClick={toggleDropdown}>
             <div onClick={toggleDropdown}>
                 {selected}
-                <div className={`create-container__input__arrow ${isOpen ? 'open' : ''}`}>{<Arrow />}</div>
+                <div className={`create-container__arrow ${isOpen ? 'open' : ''}`}>{<Arrow />}</div>
             </div>
             {isOpen && (
-                <ul className='create-container__input__dropdown-list'>
+                <ul className='create-container__dropdown-list'>
                     <li value={'компрессия'} onClick={() => handleOptionClick('компрессия')}>компрессия</li>
                     <li value={'некомпрессия'} onClick={() => handleOptionClick('некомпрессия')}>некомпрессия</li>
                 </ul>

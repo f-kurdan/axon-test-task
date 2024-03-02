@@ -1,26 +1,32 @@
-import React, { useState } from 'react'
-import Dropdown from '../../components/common/dropdown'
-import Checkbox from '../../components/common/checkbox'
-import '../create/create.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import React from 'react'
+
+import {
+    useLocation,
+    useNavigate
+} from 'react-router-dom'
 import { SubmitHandler } from 'react-hook-form/dist/types'
-import { Inputs } from '../../types/inputs'
 import { useForm } from 'react-hook-form'
+
 import { useUpdateProductTypeMutation } from '../../store/apiSlice'
-import Dialog from '../../components/common/dialog'
+import Checkbox from '../../components/common/checkbox'
+import { Inputs } from '../../types/inputs'
+import Buttons from '../../components/common/buttons'
+import PacksNumberInput from '../../components/common/packs-number-input'
+import PackageTypeInput from '../../components/common/package-type-input'
+import Textarea from '../../components/common/textarea'
+import '../create/create.css'
 
 const Edit = () => {
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
     const navigate = useNavigate()
+
     const location = useLocation();
-    
     const queryParams = new URLSearchParams(location.search);
     const id = queryParams.get('productType') ?? '';
     const packsNumber = Number(queryParams.get('packsNumber'));
     const packageType = queryParams.get('packageType') ?? '';
     const isArchived = Boolean(queryParams.get('isArchived'));
     const description = queryParams.get('description') ?? '';
-    
+
     const [updateProductType] = useUpdateProductTypeMutation()
     const {
         register,
@@ -42,63 +48,26 @@ const Edit = () => {
             await updateProductType({ id, ...data }).unwrap()
             navigate('/')
         } catch (err) {
-            console.error('Failed to save the post: ', err)
+            console.error('Ошибка при сохранении: ', err)
         }
     }
-
-    
-    const handleOpenDialog = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-        setIsDialogOpen(true);
-    };
-
-    const handleCloseDialog = () => {
-        setIsDialogOpen(false);
-    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="create-container">
             <div className="create-container__title">
                 <span>Редактирование типа продукции</span>
             </div>
-            <label className='create-container__label'>
-                <span className={`${errors.packageType ? 'required' : ''}`}>Кол-во пачек</span>
-                <input
-                    {...register("packsNumber", {
-                        required: true,
-                    })}
-                    className='create-container__input'
-                    type="number" />
-            </label>
-            <label className='create-container__label'>
-                <span className={`${errors.packageType ? 'required' : ''}`}>Тип упаковки</span>
-                <Dropdown register={register}
-                    setValue={setValue}
-                    packageType={packageType} />
-            </label>
-            <div className='create-container__checkbox'>
-                Архивировано
-                <Checkbox register={register} />
-            </div>
-            <label className='create-container__textarea-label'>
-                Описание
-                <textarea
-                    {...register("description")}
-                    className='create-container__textarea' />
-            </label>
-            <div className='create-container__buttons'>
-                <button onClick={(e) => handleOpenDialog(e)} className='create-container__buttons__delete button'>
-                    <span className='create-container__buttons__delete__text'>Удалить</span>
-                </button>
-                <Dialog
-                    isOpen={isDialogOpen}
-                    onClose={handleCloseDialog}
-                    productTypeId={id} />
-                <Link to={'/'} style={{ textDecoration: 'none' }}>
-                    <button className='create-container__buttons__cancel button'>Отмена</button>
-                </Link>
-                <button className='create-container__buttons__create button'>Сохранить</button>
-            </div>
+            <PacksNumberInput
+                register={register}
+                errors={errors} />
+            <PackageTypeInput
+                register={register}
+                errors={errors}
+                setValue={setValue}
+                packageType={packageType} />
+            <Checkbox register={register} />
+            <Textarea register={register} />
+            <Buttons page={'edit'} id={id} />
         </form>
     )
 }

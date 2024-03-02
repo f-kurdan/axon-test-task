@@ -1,6 +1,11 @@
+import React, { 
+    useRef, 
+    useState, 
+    useEffect } from 'react'
+
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useRef, useState, useEffect } from 'react'
+
 import { ProductType } from '../../types/productType'
 import MutaionsIcons from './mutaions-icons';
 import Tooltip from './tooltip';

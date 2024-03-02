@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
+
 import { useGetProductTypesQuery } from '../../store/apiSlice';
+import Loader from './loader';
 import Type from './type';
 
 const ProductTypes = () => {
@@ -14,11 +16,9 @@ const ProductTypes = () => {
         return sortedPosts
     }, [productTypes])
 
-    if (isLoading) {
-        return (<div>Загрузка...</div>)
-    } else if (isError) {
-        return (<div>{'Произошла ошибка'}</div>)
-    }
+    // if (isLoading) {
+    //     return (<Loader/>)
+    // } 
 
     return (
         <>
@@ -26,7 +26,7 @@ const ProductTypes = () => {
                 <tr key={productType.id}>
                     <Type productType={productType} index={index} />
                 </tr>
-            )) : null}
+            )) : <Loader/>}
         </>
     )
 }
