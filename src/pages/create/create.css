@@ -110,10 +110,6 @@
     align-items: center;
 }
 
-/* .checkbox-label {
-    position: relative;
-} */
-
 .checkbox-label__checkbox {
     appearance: none;
     display: flex;
@@ -136,7 +132,6 @@
     fill: none;
     transition: all 0.2s ease;
     cursor: pointer;
-    
 }
 
 .checkbox-label__checkbox:checked +.checkbox-label__custom-arrow {
