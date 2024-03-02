@@ -78,11 +78,16 @@
     background-color: #FAFAFA;
     border-radius: 6px;
     border-top: none;
+    box-shadow: 0 0 10px rgba(73, 73, 73, 0.2);
     list-style-type: none;
     margin-top: 0;
     padding: 0;
     cursor: pointer;
     z-index: 10;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .create-container__dropdown-list li {

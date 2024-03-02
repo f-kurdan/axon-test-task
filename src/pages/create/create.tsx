@@ -44,11 +44,10 @@ const Create = () => {
             <PackageTypeInput
                 register={register}
                 errors={errors}
-                setValue={setValue}
-                packageType={''} />
+                setValue={setValue} />
             <Checkbox register={register} />
             <Textarea register={register} />
-            <Buttons page={''} id='' />
+            <Buttons />
         </form>
     )
 }

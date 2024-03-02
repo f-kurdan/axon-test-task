@@ -9,14 +9,14 @@ const PackageTypeInput = ({ register, errors, setValue, packageType }: {
     register: UseFormRegister<Inputs>,
     errors: FieldErrors<Inputs>,
     setValue: UseFormSetValue<Inputs>,
-    packageType: string
+    packageType?: string
 }) => {
     return (
         <label className='create-container__label'>
             <span className={`${errors.packageType ? 'required' : ''}`}>Тип упаковки</span>
             <Dropdown register={register}
                 setValue={setValue}
-                packageType={packageType} />
+                packageType={packageType ?? ''} />
         </label>
     )
 }
