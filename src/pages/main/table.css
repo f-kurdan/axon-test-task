@@ -203,7 +203,7 @@ tbody {
   position: relative;
 }
 
-.tooltip {
+.tooltip__dialog {
   position: absolute;
   top: calc(100% + 5px);
   left: 50%;
@@ -215,4 +215,5 @@ tbody {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  overflow-wrap: break-word;
 }
