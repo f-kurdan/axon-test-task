@@ -18,7 +18,7 @@ const MutaionsIcons = ({ productType }: { productType: ProductType }) => {
     setIsDialogOpen(false);
   };
 
-  const URL = `/edit?productType=${productType.id}&packsNumber=${productType.packsNumber}&packageType=${productType.packageType}&isArchived=${productType.isArchived}&description=${productType.description}`
+  const URL = `/edit?productType=${productType.id}`;
 
   return (
     <div className='mutation-icons'>

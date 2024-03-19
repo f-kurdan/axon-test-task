@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
     useLocation,
@@ -7,7 +7,7 @@ import {
 import { SubmitHandler } from 'react-hook-form/dist/types'
 import { useForm } from 'react-hook-form'
 
-import { useUpdateProductTypeMutation } from '../../store/apiSlice'
+import { useGetProductTypeQuery, useUpdateProductTypeMutation } from '../../store/apiSlice'
 import Checkbox from '../../components/common/checkbox'
 import { Inputs } from '../../types/inputs'
 import Buttons from '../../components/common/buttons'
@@ -20,18 +20,22 @@ const Edit = () => {
     const navigate = useNavigate()
 
     const location = useLocation();
+
     const queryParams = new URLSearchParams(location.search);
     const id = queryParams.get('productType') ?? '';
-    const packsNumber = Number(queryParams.get('packsNumber'));
-    const packageType = queryParams.get('packageType') ?? '';
-    const isArchived = Boolean(queryParams.get('isArchived'));
-    const description = queryParams.get('description') ?? '';
+    const { data } = useGetProductTypeQuery(id)
+
+    const packsNumber = data?.packsNumber;
+    const packageType = data?.packageType;
+    const isArchived = data?.isArchived;
+    const description = data?.description;
 
     const [updateProductType] = useUpdateProductTypeMutation()
     const {
         register,
         handleSubmit,
         setValue,
+        reset,
         formState: { errors },
     } = useForm<Inputs>({
         defaultValues: {
@@ -41,6 +45,15 @@ const Edit = () => {
             description,
         }
     })
+
+    useEffect(() => {
+        reset({
+            packsNumber,
+            packageType,
+            isArchived,
+            description,
+        })
+    }, [data])
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         data.packsNumber = Number(data.packsNumber)

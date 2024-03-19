@@ -4,10 +4,12 @@ import { UseFormRegister } from 'react-hook-form/dist/types/form'
 
 import { Inputs } from '../../types/inputs'
 
-const Checkbox = ({ register }: { register: UseFormRegister<Inputs> }) => {
+const Checkbox = ({ register }: {
+    register: UseFormRegister<Inputs>
+}) => {
     return (
         <label className='checkbox'>
-                Архивировано
+            Архивировано
             <input {...register('isArchived')}
                 className='checkbox-label__checkbox'
                 type="checkbox" />

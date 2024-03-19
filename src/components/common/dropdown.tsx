@@ -44,7 +44,7 @@ const Dropdown = ({ register, setValue, packageType }: {
 
     return (
         <div ref={dropdownRef} className='create-container__input pointer' onClick={toggleDropdown}>
-            {selected}
+            {selected ? selected : packageType}
             <div className={`create-container__arrow ${isOpen ? 'open' : ''}`}>{<Arrow />}</div>
             {isOpen && (
                 <ul className='create-container__dropdown-list'>

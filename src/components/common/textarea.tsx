@@ -4,7 +4,9 @@ import { UseFormRegister } from 'react-hook-form'
 
 import { Inputs } from '../../types/inputs'
 
-const Textarea = ({ register }: { register: UseFormRegister<Inputs> }) => {
+const Textarea = ({ register }: {
+    register: UseFormRegister<Inputs>,
+}) => {
     return (
         <label className='create-container__textarea-label'>
             Описание
